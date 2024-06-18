@@ -1,0 +1,23 @@
+---
+permalink: configure/verify_registered_svm.html 
+sidebar: sidebar 
+keywords:  
+summary: 確認已登入的 SVM 列於 vCenter UI 的 VASA Provider 之下。 
+---
+= 驗證已註冊的 SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+確認已登入的 SVM 列於 vCenter UI 的 VASA Provider 之下。
+
+*步驟*
+
+. 瀏覽至 vCenter Server 。
+. 使用系統管理員認證登入。
+. 選擇 * 儲存供應商 * 。
+. 選擇*設定*。
+. 在 Storage Provider/storage backEnds 下、確認已登入的 SVM 已正確列出。
+

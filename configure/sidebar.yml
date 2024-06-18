@@ -1,0 +1,24 @@
+---
+section: configure
+title: 設定ONTAP VMware工具
+entries:
+- title: 管理網路存取
+  url: "/configure/ip_whitelisting.html"
+- title: 設定使用者角色和權限
+  url: "/configure/task_configure_user_role_and_privileges.html"
+- title: ONTAP toolTools Manager 使用者介面
+  url: "/configure/ontap_tools_manager_ui.html"
+- title: 新增 vCenter
+  url: "/configure/add_vcenter.html"
+- title: 新增儲存後端
+  url: "/configure/add_storage_backend.html"
+- title: 將儲存後端與 vCenter 建立關聯
+  url: "/configure/associate_storage_backend.html"
+- title: 內建儲存後端（ SVM 或叢集）與 vCenter
+  url: "/configure/onboard_svm.html"
+- title: 將 VASA Provider 登錄至 vCenter
+  url: "/configure/register_vasa.html"
+- title: 建立 VVols 資料存放區
+  url: "/configure/create_vvols_datastore.html"
+- title: 驗證已註冊的 SVM
+  url: "/configure/verify_registered_svm.html"

@@ -1,0 +1,53 @@
+---
+permalink: manage/storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: 儲存後端是 EXSI 主控用於資料儲存的系統。 
+---
+= 管理儲存後端
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+儲存後端是 EXSI 主控用於資料儲存的系統。
+
+
+
+== 新增儲存後端
+
+請依照下列步驟新增儲存設備後端。
+
+*步驟*
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側欄中選擇 * 儲存後端 * 。
+. 選取*「Add*」。
+
+
+
+
+== 修改儲存後端
+
+請依照下列步驟修改現有的儲存後端。
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側邊列選取儲存設備後端。
+. 選取您要修改的 * 儲存後端 *
+. 按一下垂直省略符號功能表、然後選取 * 修改 * 。
+. 輸入 * 使用者名稱 * 和 * 密碼 * 以修改儲存後端。
+
+
+
+
+== 移除儲存後端
+
+移除儲存後端之前、您需要刪除附加至儲存後端的所有資料存放區。
+請依照下列步驟移除儲存後端。
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側欄中選擇 * 儲存後端 * 。
+. 選取您要移除的儲存後端
+. 按一下垂直省略符號功能表、然後選取 * 移除 * 。
+

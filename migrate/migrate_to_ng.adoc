@@ -1,0 +1,101 @@
+---
+permalink: migrate/migrate_to_ng.html 
+sidebar: sidebar 
+keywords: migrate 
+summary: 移轉儲存資料時、會使用 REST API 手動建立儲存後端。移轉 VASA 提供者資料時、資料會從現有的 Derby 資料庫匯出、並匯入至 MongoDB 資料庫。 
+---
+= 移轉至最新版的 ONTAP 工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+移轉儲存資料時、會使用 REST API 手動建立儲存後端。移轉 VASA 提供者資料時、資料會從現有的 Derby 資料庫匯出、並匯入至 MongoDB 資料庫。
+
+
+NOTE: 建議只有在安裝程式僅為 VASA 提供者功能提供服務時、才移轉傳統設定。如果您有傳統 / NVMe 資料存放區、 vVol 複寫等功能、而且在傳統環境中啟用了 SRA 、則不建議將設定移轉至適用於 VMware vSphere 10.0 的 ONTAP 工具。
+
+*關於此工作*
+
+支援從適用於 VMware vSphere 9.10D2 和 9.11D4 版本的 ONTAP 工具移轉至 10.0 版本。若要從下列位置移轉：
+* 適用於 VMware vSphere 9.10 版本的 ONTAP 工具、請先升級至 9.10D2 版本、然後移轉至 10.0 版本。
+* 適用於 VMware vSphere 9.11 版本的 ONTAP 工具、請先升級至 9.11D4 版本、然後移轉至 10.0 版本。
+
+
+NOTE: 身為現有使用者、您必須先從 9.10/9.11 取得 OVA 備份、然後再升級至 9.10D 修補程式或 9.11D 修補程式
+
+*步驟*
+
+. 在適用於 VMware vSphere 9.10D2 和 9.11D4 的現有 ONTAP 工具上啟用「 Derby 連接埠 1527 」。若要啟用連接埠、請使用 root 使用者登入 CLI 、然後執行下列命令：
++
+[listing]
+----
+iptables -I INPUT 1 -p tcp --dport 1527 -j ACCEPT
+----
+. 部署適用於 ONTAP 工具的 OVA for VMware vSphere 10.0 版本。請參閱 link:../deploy/qsg_10.html["VMware工具快速入門ONTAP"]
+. 新增您想要移轉至 ONTAP 工具的 vCenter 以取得 VMware vSphere 10.0 版本。請參閱 link:../configure/add_vcenter.html["新增 vCenter"]。
+. 從遠端外掛程式 vCenter API 本機內建儲存後端。請參閱 link:../configure/onboard_svm.html["內建儲存後端"]。將儲存設備新增為本機範圍以進行移轉。
+. 使用下列 API 進行移轉：
++
+[listing]
+----
+/api/v1/vcenters/{vcguid}/migration-jobs
+
+{
+  "otv_ip": "10.10.10.10",
+  "vasa_provider_credentials": {
+    "username": "Administrator",
+    "password": "password"
+  }
+}
+----
++
+上述 API 呼叫提供 jobid 、可用於狀態檢查。
+
+. 使用下列 URI 檢查狀態：
++
+[listing]
+----
+https://xx.xx.xx.xxx:8443/virtualization/api/jobmanager/v2/jobs/<JobID>?includeSubJobsAndTasks=true
+----
+. 工作完成後、請驗證移轉報告。您可以在 jobData 中看到來自工作回應的報告。
+. 將 ONTAP 工具儲存提供者 10.0 新增至 vCenter 和 link:../configure/register_vasa.html["將 VASA Provider 登錄至 vCenter"]。
+. 停止 ONTAP 工具儲存提供者 9.10/9.11 VASA 提供者服務（從主控台停止 VASA 提供者）。
++
+NetApp 建議您不要刪除 VASA 提供者。
+
++
+一旦舊版 VASA 供應商停止、 vCenter 就會容錯移轉至適用於 VMware vSphere 10.0 的 ONTAP 工具。所有的資料存放區和 VM 都可以存取、並可從適用於 VMware vSphere 10.0 的 ONTAP 工具取得。
+
+. 使用下列 API 執行修補程式移轉：
++
+[listing]
+----
+/virtualization/api/v1/vcenters/{vcguid}/migration-jobs/{migration_id}
+----
++
+要求主體是空的、用於修補作業。
+
++
+
+NOTE: UUID 是移轉後 API 回應時傳回的移轉 UUID 。
+
++
+一旦修補程式移轉 API 成功、所有 VM 都將符合儲存原則。
+
+
+
+用於移轉的刪除 API 為：
+
+[listing]
+----
+Delete /virtualization/api/v1/vcenters/{vcguid}/migration-jobs/{migration_id}
+----
+此 API 會依移轉 ID 刪除移轉、並刪除指定 vCenter 上的移轉。
+
+成功移轉之後、將 ONTAP 工具 10.0 登錄至 vCenter 之後、請執行下列步驟：
+
+* 重新整理所有主機上的憑證。
+* 在執行資料存放區（ DS ）和虛擬機器（ VM ）作業之前、請稍候一段時間。等待時間取決於設定中存在的主機數量、 DS 和 VM 。當您不等待時、作業可能會間歇性失敗。
+

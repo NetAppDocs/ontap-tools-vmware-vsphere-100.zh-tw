@@ -1,0 +1,20 @@
+---
+section: concepts
+title: 概念
+entries:
+- title: VMware工具總覽ONTAP
+  url: "/concepts/concept_ontap_tools_overview.html"
+- title: VVVols的VASA Provider組態
+  url: "/concepts/concept_configure_vvols_datastores.html"
+- title: 角色型存取控制
+  entries:
+  - title: ONTAP 工具的角色型存取控制概觀
+    url: "/concepts/concept_vcenter_server_role_based_access_control_features_in_vsc_for_vmware_vsphere.html"
+  - title: 使用VMware vSphere的VMware vSphere的VMware VMware VMware VMware VMware VMware
+      VMware VMware VMware VMware VMware VMware VMware VMware VMware VMware ONTAP
+      ONTAP
+    url: "/concepts/concept_recommended_ontap_roles_when_using_vsc_for_vmware_vsphere.html"
+- title: 設定ONTAP 高可用度的功能以供使用
+  url: "/concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html"
+- title: AutoSupport
+  url: "/concepts/asup.html"

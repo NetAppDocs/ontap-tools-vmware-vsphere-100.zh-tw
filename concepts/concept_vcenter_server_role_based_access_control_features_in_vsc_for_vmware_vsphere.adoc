@@ -1,0 +1,91 @@
+---
+permalink: concepts/concept_vcenter_server_role_based_access_control_features_in_vsc_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: vCenter Server提供角色型存取控制（RBAC）、可讓您控制vSphere物件的存取。 
+---
+= 概述以角色為基礎的ONTAP 存取控制功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+vCenter Server提供角色型存取控制（RBAC）、可讓您控制vSphere物件的存取。vCenter Server 使用具有角色和權限的使用者和群組權限、在其庫存中的多個不同層級提供集中式驗證和授權服務。vCenter Server 包含五個用於管理 RBAC 的主要元件：
+
+|===
+
+
+| 元件 | 說明 
+
+
+| 權限 | 權限可啟用或拒絕在 vSphere 中執行動作的存取。 
+
+
+| 角色 | 角色包含一或多個系統權限、其中每個權限都會定義系統中特定物件或物件類型的管理權限。透過指派使用者角色、使用者將繼承該角色中定義之權限的功能。 
+
+
+| 使用者與群組 | 使用者和群組的權限也可用於指派 Active Directory （ AD ）或可能是本機 Windows 使用者 / 群組的角色（不建議） 
+
+
+| 權限 | 權限可讓您指派權限給使用者或群組、以執行特定動作、並變更 vCenter Server 內部的物件。vCenter Server 權限只會影響登入 vCenter Server 的使用者、而不會影響直接登入 ESXi 主機的使用者。 
+
+
+| 物件 | 執行動作的實體。VMware vCenter 物件包括資料中心、資料夾、資源池、叢集、主機、 和 VM 
+|===
+若要成功完成工作、您必須擁有適當的 vCenter Server RBAC 角色。在工作期間、 ONTAP 工具會先檢查使用者的 vCenter Server 角色、然後再檢查使用者的 ONTAP 權限。
+
+
+NOTE: vCenter Server 角色適用於 ONTAP 工具 vCenter 使用者、而非系統管理員。依預設、系統管理員擁有產品的完整存取權、不需要指派角色給他們。
+
+使用者和群組可以成為 vCenter Server 角色的一部分、藉此存取角色。
+
+
+
+== 有關指派和修改 vCenter Server 角色的重點
+
+如果您想限制 vSphere 物件和工作的存取、只需要設定 vCenter Server 角色。否則、您可以以系統管理員的身分登入。此登入可讓您自動存取所有vSphere物件。
+
+指派角色的位置會決定使用者可以執行的 ONTAP 工具工作。您可以隨時修改一個角色。
+如果您變更角色內的權限、則與該角色相關聯的使用者應登出、然後重新登入以啟用更新的角色。
+
+
+
+== 標準角色隨ONTAP 附於整套的功能
+
+為了簡化使用 vCenter Server 權限和 RBAC 的過程、 ONTAP 工具提供標準的 ONTAP 工具角色、可讓您執行重要的 ONTAP 工具工作。還有一個唯讀角色、可讓您檢視資訊、但不執行任何工作。
+
+按一下 vSphere Client 首頁上的 * 角色 * 、即可檢視 ONTAP 工具標準角色。ONTAP 工具提供的角色可讓您執行下列工作：
+
+|===
+
+
+| *角色* | *說明* 
+
+
+| NetApp ONTAP 工具管理員 | 提供執行部分 ONTAP 工具工作所需的所有原生 vCenter Server 權限和 ONTAP 工具專屬權限。 
+
+
+| NetApp ONTAP 工具唯讀 | 提供 ONTAP 工具的唯讀存取權。這些使用者無法執行任何存取控制的 ONTAP 工具動作。 
+
+
+| NetApp ONTAP 工具資源配置  a| 
+提供部分原生 vCenter Server 權限和 ONTAP 工具專屬權限、這些權限是配置儲存設備所需的。您可以執行下列工作：
+
+* 建立新的資料存放區
+* 管理資料存放區
+
+
+|===
+Manager UI 管理角色未在 vCenter 登錄。此角色專屬於經理 UI 。
+
+如果貴公司要求您實作的角色比標準 ONTAP 工具角色更具限制性、您可以使用 ONTAP 工具角色來建立新角色。
+
+在這種情況下、您將會複製必要的 ONTAP 工具角色、然後編輯複製的角色、使其僅擁有使用者所需的權限。
+
+
+
+== ONTAP 儲存設備後端和 vSphere 物件的權限
+
+如果 vCenter Server 權限足夠、則 ONTAP 工具會檢查與儲存設備後端認證（使用者名稱和密碼）相關聯的 ONTAP RBAC 權限（您的 ONTAP 角色）。 判斷您是否有足夠權限在該儲存後端執行該 ONTAP 工具工作所需的儲存作業。如果您擁有正確的 ONTAP 權限、則可以存取
+儲存設備後端作業並執行 ONTAP 工具工作。ONTAP 角色決定您可以在儲存後端執行的 ONTAP 工具工作。

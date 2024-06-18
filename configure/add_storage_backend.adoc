@@ -1,0 +1,30 @@
+---
+permalink: configure/add_storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: 儲存後端是 EXSI 主控用於資料儲存的系統。 
+---
+= 新增儲存後端
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+儲存後端是 EXSI 主控用於資料儲存的系統。
+
+*關於此工作*
+
+此工作可協助您中止 ONTAP 叢集。
+
+*步驟*
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側欄中選擇 * 儲存後端 * 。
+. 選取*「Add*」。
+. 提供伺服器 IP 位址或 FQDN 、使用者名稱和密碼詳細資料、然後選取 * 新增 * 。
++
+
+NOTE: 僅支援 IPv4 管理階層的生命。
+
+

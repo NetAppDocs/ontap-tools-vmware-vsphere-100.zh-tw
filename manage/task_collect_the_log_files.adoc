@@ -1,0 +1,28 @@
+---
+permalink: manage/task_collect_the_log_files.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以從 ONTAP 工具圖形化使用者介面（ GUI ）中提供的選項、收集適用於 VMware vSphere 之 ONTAP 工具的記錄檔。技術支援可能會要求您收集記錄檔、以協助疑難排解問題。 
+---
+= 收集記錄檔
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以從 ONTAP 工具管理員使用者介面中提供的選項、收集適用於 VMware vSphere 的 ONTAP 工具記錄檔。技術支援可能會要求您收集記錄檔、以協助疑難排解問題。
+
+*步驟*
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側欄中選擇 * 日誌套件 * 。
++
+此作業可能需要數分鐘的時間。
+
+. 選取 * 產生 * 以產生記錄檔。
+. 輸入日誌套件組合的標籤、然後選取 * 產生 * 。
++
+下載 tar.gz 檔案並傳送給技術支援人員。
+
+

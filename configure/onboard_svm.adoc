@@ -1,0 +1,34 @@
+---
+permalink: configure/onboard_svm.html 
+sidebar: sidebar 
+keywords:  
+summary: 使用下列 API 來建置儲存設備後端、並將 SVM 對應至 vCenter 。 
+---
+= 內建儲存後端（ SVM 或叢集）與 vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用下列 API 將儲存設備後端設定為內建、並將 SVM 對應至本機 vCenter 。  請參閱 link:../configure/task_configure_user_role_and_privileges.html["設定使用者角色和權限"] ONTAP SVM 使用者權限一節。
+
+[listing]
+----
+POST /virtualization/api/v1/vcenters/<vcguid>/storage-backends
+
+{
+     "hostname_or_ip": "172.21.103.107",
+     "username": "svm11",
+     "password": "xxxxxx"
+   }
+----
+
+NOTE: 上述 API 回應的 ID 用於探索。
+
+您需要通過 API 的 x-auth 。您可以從 Swagger 中的驗證新增的 API 產生此 x-auth 。
+
+[listing]
+----
+/virtualization/api/v1/auth/vcenter-login
+----

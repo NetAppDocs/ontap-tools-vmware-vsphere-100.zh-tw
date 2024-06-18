@@ -1,0 +1,14 @@
+---
+permalink: manage/vvol_lifecycle_management.html 
+sidebar: sidebar 
+keywords: manage vVols 
+summary: 您可以使用 VMware vCenter 使用者介面來管理虛擬磁碟區（ vVols ）。 
+---
+= 管理 vVol 生命週期
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用 VMware vCenter 使用者介面來管理虛擬磁碟區（ vVols ）。如需詳細資訊、請參閱 https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.storage.doc/GUID-0F225B19-7C2B-4F33-BADE-766DA1E3B565.html["VMware文件"]。

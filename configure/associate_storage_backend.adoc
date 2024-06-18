@@ -1,0 +1,30 @@
+---
+permalink: configure/associate_storage_backend.html 
+sidebar: sidebar 
+keywords:  
+summary: 需要資訊。 
+---
+= 將儲存後端與 vCenter 建立關聯
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+vCenter 清單頁面會顯示相關的儲存後端數量。每個 vCenter 都可以選擇建立儲存後端的關聯
+
+*關於此工作*
+
+此工作可協助您在儲存後端和已登入的 vCenter 之間建立全域對應。
+
+*步驟*
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側邊列選取 vCenter 。
+. 按一下您要與儲存設備後端建立關聯的 vCenter 垂直省略符號。
+. 從快顯視窗的下拉式清單中選取儲存後端。
+. 選取 * 關聯儲存後端 * 選項、將 vCenter 與所需的儲存後端建立關聯。
++
+請參閱 link:../configure/task_configure_user_role_and_privileges.html["非管理員全域範圍叢集使用者所需的最低權限清單"]。
+
+

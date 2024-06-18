@@ -1,0 +1,130 @@
+---
+permalink: configure/create_vvols_datastore.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用新的磁碟區或現有的磁碟區來建立 vVols 資料存放區。您也可以結合現有磁碟區和新磁碟區來建立 vVols 資料存放區。 
+---
+= 建立 VVols 資料存放區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用新的磁碟區或現有的磁碟區來建立 vVols 資料存放區。您也可以結合現有磁碟區和新磁碟區來建立 vVols 資料存放區。
+
+
+NOTE: 檢查以確保根集合體未對應至 SVM 。
+
+您需要通過 API 的 x-auth 。您可以從 Swagger 中的驗證新增的 API 產生此 x-auth 。
+
+[listing]
+----
+/virtualization/api/v1/auth/vcenter-login
+----
+. 使用新的 Volume 建立 vVols 資料存放區。
+使用 ONTAP REST API 取得 Aggregate id 、 storage _id （ SVM uuid ）。
++
+[listing]
+----
+POST /virtualization/api/v1/vcenters/cdded9ad-6bsd-4c9e-b44g-691250bfe2df/vvols/datastores
+----
++
+使用下列 URI 檢查狀態：
+
++
+[listing]
+----
+`\https://xx.xx.xx.xxx:8443/virtualization/api/jobmanager/v2/jobs/<JobID>?includeSubJobsAndTasks=true`
+----
++
+Request Body for NFS 資料存放區
+
++
+[listing]
+----
+{
+   "name":"nfsds1",
+   "protocol":"nfs",
+   "platform_type":"aff",
+   "moref":"domain-c8",
+   "volumes":[
+      {
+         "is_existing":false,
+         "name":"vol_nfs_pvt",
+         "size_in_mb":2048000,
+         "space_efficiency":"thin",
+         "aggregate":{
+            "id":"d7078b3c-3827-4ac9-9273-0a32909455c2"
+         },
+         "qos":{
+            "min_iops":200,
+            "max_iops":5000
+         }
+      }
+   ],
+   "storage_backend":{
+      "storage_id":"654c67bc-0f75-11ee-8a8c-00a09860a3ff"
+   }
+}
+----
++
+iSCSI 資料存放區的要求本文：
+
+
+
+[listing]
+----
+{
+   "name" : "iscsi_custom",
+   "protocol" : "iscsi",
+   "platform_type": "aff",
+   "moref" : "domain-c8",
+   "volumes" : [
+       {
+           "is_existing" : false,
+           "name" : "iscsi_custom",
+           "size_in_mb" : 8034,
+           "space_efficiency" : "thin",
+           "aggregate" : {
+               "id" : "54fe5dd4-e461-49c8-bb2d-6d62c5d75af2"
+           }
+       }
+   ],
+   "custom_igroup_name": "igroup1",
+   "storage_backend": {
+                       "storage_id": "eb9d33ab-1960-11ee-9506-00a0985c6d9b"    }
+}
+----
+. 使用現有磁碟區建立 VVols 資料存放區。
++
+使用 ONTAP REST API 取得 Aggregal_id 和 volume ID 。
+
++
+[listing]
+----
+     POST /virtualization/api/v1/vcenters/cdded9ad-6bsd-4c9e-b44g-691250bfe2df/vvols/datastores
+----
++
+要求主體
+
+
+
+[listing]
+----
+     {
+    "name" : "nfsds2",
+    "protocol" : "nfs",
+    "platform_type": "aff",
+    "moref" : "domain-c8",
+    "volumes" : [
+        {
+              "is_existing": true,
+              "id": "e632a632-1412-11ee-8a8c-00a09860a3ff"
+            }
+    ],
+    "storage_backend": {
+                        "storage_id": "33a8b6b3-10cd-11ee-8a8c-00a09860a3ff"    }
+
+}
+----

@@ -1,0 +1,112 @@
+---
+permalink: deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords: ONTAP tools,Storage Replication Adapter 
+summary: 在部署ONTAP VMware vSphere的支援功能之前、您應該先熟悉部署套件的空間需求、以及一些基本的主機系統需求。 
+---
+= 部署ONTAP 這些功能的需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+在部署ONTAP VMware vSphere的支援功能之前、您應該先熟悉部署套件的空間需求、以及一些基本的主機系統需求。
+
+您可以將 ONTAP 工具搭配 Windows vCenter Server 或 VMware vCenter Server 虛擬應用裝置（ vCSA ）使用。您必須在支援的 vSphere 上部署 ONTAP 工具、其中包含 ESXi 系統。
+
+* * 每個節點的安裝套件空間需求 *
++
+** 10 GB 適用於精簡配置的安裝
+** 200 GB 適用於完整佈建的安裝
+
+
+* * 每個節點的主機系統規模需求 *
+根據部署規模和每個節點的建議記憶體如下表所示：
+
+
+|===
+
+
+| 部署類型 | CPU | 記憶體（ GB ） 
+
+
+| 小（ S ） | 8. | 16. 
+
+
+| 中（ M ） | 12. | 24. 
+
+
+| 大（ L ） | 16. | 32. 
+|===
+
+
+== 最低儲存與應用程式需求：
+
+|===
+| 儲存設備、主機和應用程式 | 版本需求 
+
+
+| ONTAP | ONTAP 9.10.1 、 9.11 、 9.12 和 9.13 
+
+
+| VMware vSphere | 支援的 VMware 版本最低為 7.0.2 。 
+
+
+| ESXi主機 | ESXi 7.0.3 或更新版本 
+
+
+| vCenter 伺服器 | vCenter 7.0.3 
+
+
+| VASA供應商 | 3.0 
+
+
+| ova 應用程式 | 10.0% 
+|===
+互通性對照表工具（ IMT ）包含有關支援版本的 ONTAP 、 vCenter Server 、 ESXi 主機和外掛應用程式的最新資訊。
+
+https://imt.netapp.com/matrix/imt.jsp?components=105475;&solution=1777&isHWU&src=IMT["互通性對照表工具"^]
+
+
+
+== 其他部署考量
+
+自訂部署ONTAP 功能時、您必須考量幾項需求。
+
+
+
+=== 應用程式使用者密碼
+
+這是指派給系統管理員帳戶的密碼。基於安全考量、建議密碼長度為 8 至 30 個字元、且至少包含一個上方、下方、一位數及一個特殊字元。密碼在 90 天後過期。
+
+
+
+=== 應用裝置維護主控台認證資料
+
+您必須使用「maint」使用者名稱來存取維護主控台。您可以在部署期間設定「maint」使用者的密碼。您可以使用ONTAP 您的VMware工具維護主控台的「應用程式組態」功能表來變更密碼。
+
+
+
+=== vCenter Server IP位址
+
+* 您應該提供要登錄 ONTAP 工具的 vCenter Server 執行個體 IP 位址（ IPv4 ）。
++
+產生的 ONTAP 工具和 VASA 憑證類型取決於您在部署期間提供的 IP 位址（ IPV4 ）。
+
+* 用於向 vCenter Server 登錄的 ONTAP 工具 IP 位址取決於部署精靈中輸入的 vCenter Server IP 位址（ IPv4 ）類型。
++
+ONTAP 工具和 VASA 憑證都會使用 vCenter Server 登錄期間使用的相同 IP 位址類型產生。
+
+* 確保在安裝期間不會移轉 VM 。
++
+
+NOTE: 適用於 VMware vSphere 10.0 版本的 ONTAP 工具不支援 IPv6 。
+
+
+
+
+
+=== 應用裝置網路內容
+
+指定有效的 DNS 主機名稱（不合格）、以及 ONTAP 工具和其他網路參數的靜態 IP 位址。適用於 VMware vSphere 10.0 版本的 ONTAP 工具不支援 DHCP 。所有這些參數都是正確安裝和操作所需的參數。

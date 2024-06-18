@@ -1,0 +1,34 @@
+---
+section: manage
+title: 管理ONTAP 各種工具
+entries:
+- title: 管理資料存放區
+  entries:
+  - title: 擴充或縮減 vVol Datastore 的儲存容量
+    url: "/manage/expand_storage_of_vvol_datastore.html"
+  - title: 刪除 vVols 資料存放區
+    url: "/manage/task_remove_storage_from_a_vvols_datastore.html"
+  - title: 掛載及卸載 vVols 資料存放區
+    url: "/manage/task_mount_a_vvols_datastore.html"
+- title: 管理儲存後端
+  url: "/manage/storage_backend.html"
+- title: 管理 vCenter
+  url: "/manage/manage_vcenter.html"
+- title: 管理 vVol 生命週期
+  url: "/manage/vvol_lifecycle_management.html"
+- title: 託管 iGroup 和匯出原則
+  url: "/manage/igroup_management.html"
+- title: 存取ONTAP VMware工具維護主控台
+  entries:
+  - title: 功能概述：工具維護主控台ONTAP
+    url: "/manage/reference_maintenance_console_of_ontap_tools_for_vmware_vsphere.html"
+  - title: 設定遠端診斷存取
+    url: "/manage/task_configure_vasa_provider_to_use_ssh_for_remote_diag_access.html"
+  - title: 在其他節點上啟動 SSH
+    url: "/manage/start_the_ssh_on_other_nodes.html"
+  - title: 更新 vCenter 和 ONTAP 認證
+    url: "/manage/update_vcenter_ontap_credentials.html"
+- title: 收集記錄檔
+  url: "/manage/task_collect_the_log_files.html"
+- title: 探索
+  url: "/manage/discovery.html"

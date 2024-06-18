@@ -1,0 +1,19 @@
+---
+permalink: concepts/asup.html 
+sidebar: sidebar 
+keywords:  
+summary: 此機制可主動監控系統健全狀況、並自動傳送訊息給NetApp技術支援、您的內部支援組織及支援合作夥伴。AutoSupport雖然根據預設會啟用技術支援的支援功能、但您必須設定正確的選項、並擁有有效的郵件主機、才能將訊息傳送給內部支援組織。AutoSupport 
+---
+= AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此機制可主動監控系統健全狀況、並自動傳送訊息給NetApp技術支援、您的內部支援組織及支援合作夥伴。AutoSupport
+
+當您第一次設定儲存系統時、預設會啟用此功能。AutoSupport啟用此功能24小時後、系統會開始傳送訊息給技術支援人員。AutoSupport AutoSupport
+
+您只能在部署時啟用或停用 AutoSupport 。建議您保持啟用狀態。啟用AutoSupport 支援功能可大幅加快問題的判斷速度、並在儲存系統發生問題時予以解決。根據預設、系統會收集AutoSupport 並儲存這些資訊到本機、即使您停用AutoSupport 了某些功能。
+您必須在網路中加入 216.240.21.18 // support.netapp.com URL 才能成功傳輸。

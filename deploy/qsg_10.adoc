@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: deploy/qsg_10.html 
+keywords: QSG, ONTAP tools for VMware vSphere, Quick start guide, Installing 
+summary: 提供VMware ONTAP vSphere的部署和初始化功能。 
+---
+= VMware vSphere快速入門工具ONTAP
+:hardbreaks:
+:toclevels: 1
+:allow-uri-read: 
+:toclevels: 1
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+適用於 VMware vSphere 的 ONTAP 工具是單一 vCenter Server 外掛程式、內含 ONTAP 工具和 VASA Provider 擴充功能。建議所有 ONTAP vSphere 環境使用 ONTAP 工具、因為它會使用最佳實務做法來設定 ESXi 主機設定和配置 ONTAP 儲存設備。虛擬磁碟區（ VVols ）支援需要 VASA Provider 。
+
+
+
+== 準備安裝
+
+您將外掛程式部署為虛擬應用裝置、可減少在vCenter Server上個別安裝及註冊每個產品的工作。
+
+
+
+=== 部署需求
+
+在部署適用於 VMware vSphere 的 ONTAP 工具之前、您應該先熟悉部署套件的空間需求、以及一些基本主機系統需求。
+
+您可以將 ONTAP 工具搭配 Windows vCenter Server 或 VMware vCenter Server VirtualAppliance （ vCSA ）使用。您必須在支援的 vSphere 上部署 ONTAP 工具、其中包含 ESXi 系統。
+
+* * 每個節點的安裝套件空間需求 *
++
+** 10 GB 適用於精簡配置的安裝
+** 200 GB 適用於完整佈建的安裝
+
+
+* * 每個節點的主機系統規模需求 *
+根據部署規模和每個節點的建議記憶體如下表所示：
+
+
+|===
+
+
+| 部署類型 | CPU | 記憶體（ GB ） 
+
+
+| 小（ S ） | 8. | 16. 
+
+
+| 中（ M ） | 12. | 24. 
+
+
+| 大（ L ） | 16. | 32. 
+|===
+
+
+== 最低儲存與應用程式需求：
+
+|===
+| 儲存設備、主機和應用程式 | 版本需求 
+
+
+| ONTAP | ONTAP 9.10.1 、 9.11 、 9.12 和 9.13 
+
+
+| VMware vSphere | 支援的 VMware 版本最低為 7.0.2 。 
+
+
+| ESXi主機 | ESXi 7.0.3 或更新版本 
+
+
+| vCenter 伺服器 | vCenter 7.0.3 
+
+
+| VASA供應商 | 3.0 
+
+
+| ova 應用程式 | 10.0% 
+|===
+如需詳細資訊、請參閱 link:../deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html["部署ONTAP 這些功能的需求"]
+
+
+
+=== VMware工具需求ONTAP
+
+* 設定及設定vCenter Server環境。
+* 下載.ova檔案。
+* vCenter Server執行個體的登入認證。
+* 刪除瀏覽器快取、以避免在部署ONTAP VMware工具期間發生任何瀏覽器快取問題。
+* 設定虛擬應用裝置用來回應ICMP Ping的預設閘道。
+* 虛擬應用裝置的有效DNS主機名稱。
+
+
+
+
+== 部署ONTAP 各種功能
+
+.步驟
+. 下載 `.zip` 包含的二進位檔和簽署憑證的檔案 https://mysupport.netapp.com/site/products/all/details/otv/downloads-tab["NetApp 支援網站"^] 至vSphere Client系統以部署ONTAP 這些功能。
+. 擷取 `.zip` 歸檔並部署 `.ova` 檔案：
+. 登入 vSphere 伺服器。
+. 瀏覽至您要部署 OVA 的資源集區或主機。
+. 以滑鼠右鍵按一下所需的資料中心、然後選取 * 部署 OVF 範本 ...* 。
+. 您可以輸入 .ova 檔案的 URL 、或瀏覽至儲存 .ova 檔案的資料夾、然後選取 * 下一步 * 。
+. 輸入完成部署所需的詳細資料。
+
+
+您可以從「工作」索引標籤檢視部署進度、並等待部署完成。

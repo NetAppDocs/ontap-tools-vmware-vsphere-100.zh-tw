@@ -1,0 +1,18 @@
+---
+section: deploy
+title: 部署ONTAP 各種工具
+entries:
+- title: VMware工具快速入門ONTAP
+  url: "/deploy/qsg_10.html"
+- title: 部署ONTAP 這些功能的需求
+  url: "/deploy/concept_space_and_sizing_requirements_for_ontap_tools_for_vmware_vsphere.html"
+- title: 如何下載ONTAP 功能介紹工具
+  url: "/deploy/concept_how_to_download_ontap_tools.html"
+- title: 部署檢查清單
+  url: "/deploy/deployment_checklist.html"
+- title: 準備部署 ONTAP 工具
+  url: "/deploy/prepare_deployment.html"
+- title: 如何部署非 HA 單一節點組態
+  url: "/deploy/nonha_deployment.html"
+- title: 如何部署 HA 三節點組態
+  url: "/deploy/ha_three_node.html"

@@ -1,0 +1,27 @@
+---
+permalink: configure/add_vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: vCenter 是可讓您控制主機、虛擬機器（ VM ）和儲存後端的中央管理平台。 
+---
+= 新增 vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+vCenter 是可讓您控制主機、虛擬機器（ VM ）和儲存後端的中央管理平台。
+
+*關於此工作*
+
+您可以使用單一 ONTAP 工具執行個體來新增及管理多個 vCenter 、以適用於 VMware vCenter 10.0 。
+
+*步驟*
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側邊列選取 vCenter
+. 選擇 * 新增 * 至具有 vCenter IP 位址 / 主機名稱、使用者名稱、密碼和連接埠的主機板內建 vCenter 。
+
+
+請參閱 link:../configure/task_configure_user_role_and_privileges.html["非管理員全域範圍叢集使用者所需的最低權限清單"]。

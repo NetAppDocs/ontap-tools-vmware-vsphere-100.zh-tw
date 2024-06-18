@@ -1,0 +1,39 @@
+---
+permalink: configure/register_vasa.html 
+sidebar: sidebar 
+keywords:  
+summary: 您可以使用自我簽署的憑證或 CA 簽署的憑證、將 VASA 所提供的服務登錄至 vCenter 。自我簽署的憑證是使用 VMware CA 交握來產生。 
+---
+= 將 VASA Provider 登錄至 vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用自我簽署的憑證或 CA 簽署的憑證、將 VASA 所提供的服務登錄至 vCenter 。自我簽署的憑證是使用 VMware CA 交握來產生。
+
+*關於此工作*
+
+使用 CA 簽署的憑證方法時、您需要將 CA 簽署的憑證放入 vCenter 。
+
+*步驟*
+
+. 瀏覽至 vCenter 伺服器。
+. 選擇 * 設定 * > * 儲存供應商 * 。
+. 按一下 * 新增 * 圖示。
+. 輸入儲存供應商的連線資訊：
++
+.. 名稱：任何使用者易記的名稱、例如「 ScaleoutVP 」
+.. 網址： `\https://<name>/virtualization/version.xml` - URL 中的名稱對應於在部署單一 vCenter 部署（或）多 vCenter 部署的單一 vCenter 部署（或）網域名稱期間所提供的虛擬 IP 。將憑證新增至 URL 。相同的憑證會發佈至 vCenter 。
+.. 認證：在 OVA 部署期間提供的 <VASA Provider UserName>/< VASA Provider password> 。
+
+
+. 在 VASA 註冊之後、按一下 * 確定 * 。
+請確定其列在儲存設備供應商下方、且狀態為線上。
++
+如果您已在 vCenter 中放置 CA 簽署憑證、則 VASA 登錄會繼續使用 CA 簽署的憑證。否則、信號交換失敗、登錄預設為 SSA 憑證。
+
+. 您可以將多個 vCenter 登錄到單一橫向擴充 VP 執行個體。
+重複上述步驟以登錄多個 vCenter 。
+

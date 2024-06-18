@@ -1,0 +1,118 @@
+---
+permalink: manage/manage_vcenter.html 
+sidebar: sidebar 
+keywords:  
+summary: vCenter 是集中管理平台、可讓您控制主機、虛擬機器和儲存後端。 
+---
+= 管理 vCenter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+vCenter 是集中管理平台、可讓您控制主機、虛擬機器和儲存後端。
+
+
+
+== 新增 vCenter
+
+您可以使用單一 ONTAP 工具執行個體來新增及管理多個 vCenter 、以適用於 VMware vCenter 10.0 。
+
+*步驟*
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側邊列選取 vCenter
+. 選擇 * 新增 * 至具有 vCenter IP 位址 / 主機名稱、使用者名稱、密碼和連接埠的主機板內建 vCenter 。
+. 瀏覽至 * 儲存設備後端 * 頁面、然後選取 * 新增至主機名稱、使用者名稱、密碼和連接埠的主機板內建儲存後端 * （ ONTAP 叢集）。
+
+
+請參閱 link:../configure/task_configure_user_role_and_privileges.html["非管理員全域範圍叢集使用者所需的最低權限清單"]。
+
+
+
+== 將儲存後端與 vCenter 建立關聯或取消關聯
+
+vCenter 清單頁面會顯示相關的儲存後端數量。每個 vCenter 都可以選擇關聯或取消關聯儲存後端
+此工作可協助您在儲存後端和已登入的 vCenter 之間建立全域對應。
+
+*步驟*
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側邊列選取 vCenter 。
+. 按一下您要與儲存設備後端建立關聯或取消關聯的 vCenter 垂直省略符號。
+. 根據您要執行的操作，選擇 * 關聯或取消關聯儲存後端 * 。
++
+請參閱 link:../configure/task_configure_user_role_and_privileges.html["非管理員全域範圍叢集使用者所需的最低權限清單"]。
+
+
+
+
+
+== 修改 vCenter
+
+請依照下列步驟修改 vCenter 。
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側邊列選取 vCenter
+. 按一下您要修改的 vCenter 上的垂直省略符號、然後選取 * 修改 * 。
+. 修改 vCenter 詳細資料、然後選取 * 修改 * 。
+
+
+
+
+== 移除 vCenter
+
+移除 vCenter 之前、您需要移除附加至 vCenter 的所有儲存後端。
+
+. 上市 `\https://loadBalanceIP:8443/virtualization/ui/` 從部署期間提供 ONTAP 工具管理員認證的瀏覽器。
+. 從側邊列選取 vCenter
+. 按一下您要移除的 vCenter 上的垂直省略符號、然後選取 * 移除 * 。
++
+
+NOTE: 移除 vCenter 之後、應用程式將不再維護 vCenter 。
+
+
+
+
+
+== 管理儲存臨界值
+
+使用下列 Get 臨界值 API 擷取已設定的 Volume 和 Aggregate 儲存臨界值限制。
+
+[listing]
+----
+GET​/virtualization​/api​/v1​/vcenters​/{vcguid}​/storage-thresholds
+----
+範例：
+按 vCenter guid 取得每個 vCenter 的儲存臨界值
+
+[listing]
+----
+GET "/api/v1/vcenters/beded9ad-6bbb-4c9e-b4c6-691250bfe2da/storage-thresholds"
+----
+使用下列修補程式設定磁碟區和 Aggregate 的警示、在達到設定的臨界值限制時產生通知。
+
+[listing]
+----
+PATCH​/virtualization​/api​/v1​/vcenters​/{vcguid}​/storage-thresholds
+----
+範例：
+按 vCenter Guid 更新每個 vCenter 的儲存臨界值。預設上限為 80% （幾乎全滿）、 90% （全滿）。
+修改所有臨界值設定
+
+[listing]
+----
+{{{}PATCH "/api/v1/vcenters/beded9ad-6bbb-4c9e-b4c6-691250bfe2da/storage-thresholds"
+Request Body
+{
+"volume":
+
+{ "nearly_full_percent": 80, "full_percent": 90 }
+,
+"aggregate": {
+"nearly_full_percent": 80,
+"full_percent": 90
+}
+}{}}}{}
+----

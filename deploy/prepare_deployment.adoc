@@ -1,0 +1,69 @@
+---
+permalink: deploy/prepare_deployment.html 
+sidebar: sidebar 
+keywords:  
+summary: 您應該在ONTAP 環境中部署VMware Tools、並指定必要的參數、才能使用應用裝置。 
+---
+= 準備部署 ONTAP 工具
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+適用於 VMware vSphere 的 ONTAP 工具支援包含 VASA Provider 的多 vCenter Server 。
+
+在開始部署適用於 VMware vSphere 的 ONTAP 工具之前、您應該瞭解基本的儲存後端需求、應用程式需求和授權需求。
+在部署ONTAP VMware vSphere的VMware vCenter工具之前、最好先規劃部署、然後決定如何在ONTAP 環境中設定這些VMware工具。
+
+
+
+== 準備部署
+
+以下是繼續部署之前的 ONTAP 工具需求：
+
+* 設定及設定vCenter Server環境。
+* 下載 _.ova_ 檔案。
+* 請確定部署 OVA 的主機或資源集區具有 * 部署 ONTAP 工具的需求 * 一節中所述的最低資源。
+* 刪除瀏覽器快取。
+* 負載平衡器和 Kubernetes API 伺服器需要兩個虛擬 IP 。在 VLAN 中取得兩個用於部署的免費 IP 、用於在部署後存取服務。
+* 從商業 CA 取得 CA 憑證（根、葉和中介憑證）。
+* 如果多 vCenter 部署必須有自訂 CA 憑證、請將憑證所在的 * 網域名稱 * 對應至 * 虛擬 IP* 。對網域名稱執行 Ping 檢查、以檢查網域是否已解析為預期的 IP 。
+* ONTAP 上必須啟用 NFS 的儲存 VM 。請依照下列步驟設定儲存 VM ：
++
+** 同時開啟 ONTAP 系統管理員和 ONTAP CLI 。
+** 如果您偏好建立新的儲存 VM 、請登入您的 ONTAP 系統管理員、然後建立啟用 NFS 的儲存 VM 。
+** 新增至少 100GB 的 Aggregate 。
+** 若要驗證是否成功新增 Aggregate ：
++
+a ）登入 ONTAP CLI
+
++
+b) 執行命令 vserver show -fields aggr-list
+
++
+c ）如果您的 Aggregate 未列在預設的儲存 VM 上、請執行命令： vserver modify <storage VM name> -aggr-list <aggregate name>
+
++
+若要尋找您要新增至預設儲存 VM 的集合體名稱、您可以在 ONTAP CLI 中使用下列命令： _aggr show_
+
++
+此命令會顯示儲存系統上的集合體清單、您可以在 * Aggregate * 欄中找到所需的集合體名稱。
+
+** 部署組態有兩個選項、一個是叢集認證、另一個是 SVM 認證或直接 SVM 。對於直接 SVM 、您必須先設定 SVM 的管理 LIF 、才能開始部署。請略過此項目以取得叢集認證。
+** 請確定網路路由存在、登入 ONTAP CLI 並執行 network route show -vserver < 儲存 VM name> 命令
++
+如果不存在、請登入您的 ONTAP CLI 並執行下列命令： net route create -vserver <vserver name> -destination <destination IP> -gateway <gateway IP> -metric 20
+
+** 請確定儲存 VM 有匯出原則。在您的 ONTAP 系統管理員上、移至 * 儲存 * > * 儲存 VM* > * [ 儲存 VM 名稱 ]* > * 設定 * > * 匯出原則 * 。如果沒有匯出原則、請遵循下一步。
+** 使用 ONTAP CLI 中的下列命令建立匯出原則規則
++
+vserver 匯出原則規則 create -vserver < 儲存 VM 名稱 > -policyname < 匯出原則名稱 > -clientmatch <ESXI-IP> -rorule any -rwRule any -Superuser any
+
++
+
+NOTE: 確保 _ 超級用戶 _ 值不是 _ 無 _ 。
+
+
+
+

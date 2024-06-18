@@ -1,0 +1,33 @@
+---
+permalink: concepts/concept_configure_high_availability_for_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: 支援高可用度（HA）組態的支援功能、有助於在故障時提供不中斷的功能。ONTAP ONTAP 
+---
+= 設定ONTAP 高可用度的功能以供使用
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+支援高可用度（HA）組態的支援功能、可在故障時提供不中斷的功能。ONTAP ONTAP
+
+利用VMware vSphere高可用度（HA）功能和vSphere容錯能力（FT）功能來提供高可用度。ONTAP高可用度（HA）解決方案可讓您從下列原因造成的停機中快速恢復：
+
+* 主機故障
++
+
+NOTE: 僅支援單一節點故障。
+
+* 網路故障
+* 虛擬機器故障（客體作業系統故障）
+* 應用程式ONTAP （VMware工具）當機
+
+
+不需要額外的組態ONTAP 設定即可提供高可用度的VMware Tools。只有vCenter Server和ESXi主機必須根據需求、設定VMware vSphere HA功能或vSphere FT功能。HA和FT都需要叢集式主機搭配共用儲存設備。FT有額外的要求和限制。
+
+除了VMware vSphere HA解決方案和vSphere FT解決方案之外、ONTAP VMware®工具也能協助ONTAP 確保各項VMware工具服務隨時都能正常運作。
+
+
+NOTE: vCenter HA不受ONTAP 支援。

@@ -1,0 +1,37 @@
+---
+permalink: configure/ip_whitelisting.html 
+sidebar: sidebar 
+keywords:  
+summary: 此功能可讓您指定資料存放區裝載作業所允許的特定 ESXi 主機位址。 
+---
+= 管理網路存取
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+此功能可讓您指定資料存放區裝載作業所允許的特定 ESXi 主機位址。
+
+當 ESXi 主機有多個 IP 位址時、會將主機中所有探索到的 IP 位址新增至匯出原則。如果您不想新增所有 IP 位址來匯出原則、請在以逗號分隔的清單或範圍或 CIDR 中、提供白名單 IP 位址的設定、或是為每個 vCenter 提供全部三個位址的組合。
+
+如果未提供此設定、匯出原則會新增在預先掛載步驟中探索到的所有 IP 位址。如果提供此設定、 ONTAP 工具只會新增屬於白名單 IP 或範圍內的項目。如果主機的 IP 都不屬於白名單 IP 、則該主機上的掛載將會失敗。
+
+依預設、所有主機 IP 都會新增至匯出原則。
+
+使用下列 API 新增 IP 位址以進行白名單：
+
+[listing]
+----
+patch /api/v1/vcenters/{vcguid}/settings/ip-whitelist
+
+{
+    value: string
+}
+
+GET /api/v1/vcenters/{vcguid}/settings/ip-whitelist
+
+{
+    value: string
+}
+----
