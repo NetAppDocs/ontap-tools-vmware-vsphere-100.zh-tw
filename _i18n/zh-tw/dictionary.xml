@@ -818,7 +818,6 @@ vVols虛擬機器摘要報告功能表提供所有使用SAN vVols資料存放區
   <block id="6b50b8836085008a8950ddeafeb7453a" category="list-text">重新整理所有主機上的憑證。</block>
   <block id="8d1fe487abd8a4fd3b25772f93b38695" category="list-text">在執行資料存放區（ DS ）和虛擬機器（ VM ）作業之前、請稍候一段時間。等待時間取決於設定中存在的主機數量、 DS 和 VM 。當您不等待時、作業可能會間歇性失敗。</block>
   <block id="8f7be3c874feb6ef0fd5f20afd8d5fbb" category="sidebar">VMware vSphere的支援工具可讓您在vCenter Server環境中設定、管理及保護虛擬資料存放區。ONTAP</block>
-  <block id="46c4d9bfa1c229940459326940489ab0" category="sidebar">VMware vSphere文件的相關工具ONTAP</block>
   <block id="be11c74c1dd7f307bb80183a90dc2067" category="sidebar">開始使用</block>
   <block id="da951ef1610be90b45b31baf7b25b179" category="sidebar">深入瞭ONTAP 解VMware vSphere的各種功能</block>
   <block id="3d7fe3e43f9f24fffe5ed0d546d12f13" category="sidebar">部署ONTAP 各種工具</block>
@@ -840,4 +839,5 @@ vVols虛擬機器摘要報告功能表提供所有使用SAN vVols資料存放區
   <block id="4226794a7bb33ab0a2309e30c07c9031" category="sidebar">管理ONTAP 各種工具</block>
   <block id="956040396bc93fbe70e3c9e235f5bfdb" category="sidebar">存取ONTAP VMware工具維護主控台</block>
   <block id="1fa54bab7f1f7a04eb85d45383a68d04" category="sidebar">移轉至最新的 ONTAP 工具版本</block>
+  <block id="70805c0934ed6aecfa95bd2f05ac18f9" category="sidebar">適用於 VMware vSphere 10.0 的 ONTAP 工具文件</block>
 </blocks>
