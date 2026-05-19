@@ -19,7 +19,6 @@
   <block id="aea7780202aad9f17865502971d71ddb" category="paragraph">vVols儀表板只會在ONTAP 完成對錶板API服務的登錄OnCommand 之後、才會顯示有關支援功能不全的資料儲存區的指標、以供參考9.6或更早版本的SAN vVols資料儲存區。</block>
   <block id="d33f2a600ba4fe43084a26e95e4908c0" category="paragraph">*相關資訊*</block>
   <block id="09ea0908fbfc4cde85bf416e35dc55c8" category="inline-link">NetApp支援</block>
-  <block id="cba784dbb6dad30cadc1fcb2d1b5ee81" category="paragraph"><block ref="cba784dbb6dad30cadc1fcb2d1b5ee81" category="inline-link-rx"></block></block>
   <block id="1f20c5324bd47f6a89468a55d2c34744" category="summary">確認已登入的 SVM 列於 vCenter UI 的 VASA Provider 之下。</block>
   <block id="a8bda24f7b029a4e9ed8df1730260e6b" category="doc">驗證已註冊的 SVM</block>
   <block id="3b81d27fac8f09b16f1a3c38fef1586e" category="list-text">瀏覽至 vCenter Server 。</block>
@@ -693,7 +692,6 @@ vVols虛擬機器摘要報告功能表提供所有使用SAN vVols資料存放區
   <block id="b8bafde4431b38de965f30c3734964f4" category="summary">您可以使用 VMware vCenter 使用者介面來管理虛擬磁碟區（ vVols ）。</block>
   <block id="d9276c26f2211283ba19ffbe9892975e" category="doc">管理 vVol 生命週期</block>
   <block id="70cd8bfb8fd7a4082087201414ab2fe4" category="inline-link">VMware文件</block>
-  <block id="56b27132529593e6a2643cedb7fc831b" category="paragraph">您可以使用 VMware vCenter 使用者介面來管理虛擬磁碟區（ vVols ）。如需詳細資訊、請參閱<block ref="306659423eb4d9ea8034618888b3eb7c" category="inline-link-rx"></block>。</block>
   <block id="41187f39c5556f847389f030fbe4053d" category="summary">此 API 會從儲存區刪除 VMware 虛擬磁碟區（ vVols ）資料存放區。</block>
   <block id="da7b82b6a9be0a66d777ff248aa41e61" category="doc">刪除 vVols 資料存放區</block>
   <block id="2d36e1f0f8fe164f2254fd5074ea89ac" category="paragraph">只要FlexVol 資料存放區上至少有一個可用的現象區、就會存在VVols資料存放區。如果您想要刪除 HA 叢集中的 vVols 資料存放區、您應該先從 HA 叢集中的所有主機卸載資料存放區、然後使用 vCenter Server 使用者介面手動刪除駐留的 _.vsphere-hay_ 資料夾。</block>
@@ -840,4 +838,6 @@ vVols虛擬機器摘要報告功能表提供所有使用SAN vVols資料存放區
   <block id="956040396bc93fbe70e3c9e235f5bfdb" category="sidebar">存取ONTAP VMware工具維護主控台</block>
   <block id="1fa54bab7f1f7a04eb85d45383a68d04" category="sidebar">移轉至最新的 ONTAP 工具版本</block>
   <block id="70805c0934ed6aecfa95bd2f05ac18f9" category="sidebar">適用於 VMware vSphere 10.0 的 ONTAP 工具文件</block>
+  <block id="f4d1718476f238773172cc8143587c05" category="paragraph"><block ref="f4d1718476f238773172cc8143587c05" category="inline-link-rx"></block></block>
+  <block id="1e4b9ffc4e54052240830044d276f69d" category="paragraph">您可以使用 VMWare vCenter 使用者介面來管理虛擬磁碟區（vVols）。如需詳細資訊，請參閱<block ref="b31ad4861a6077bb3dacdbc9a1a70e79" category="inline-link-rx"></block>。</block>
 </blocks>
